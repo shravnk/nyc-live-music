@@ -1,0 +1,12 @@
+class < ActiveRecord::Migration
+	def change
+		create_table :shows do |t|
+			t.string :name
+			t.string :age
+			t.integer :price
+			t.datetime :start_time
+			t.integer :venue_id
+			t.integer :artist_id
+		end
+	end
+end
