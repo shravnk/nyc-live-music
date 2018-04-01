@@ -5,4 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use FanController
+use VenueController
+use ArtistController
+use ShowController
 run ApplicationController

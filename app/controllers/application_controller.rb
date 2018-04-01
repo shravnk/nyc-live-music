@@ -1,4 +1,9 @@
+require './config/environment.rb'
+require 'pry'
+
 class ApplicationController < Sinatra::Base
+
+  register Sinatra::ActiveRecordExtension
 
   configure do
     set :public_folder, 'public'
@@ -7,7 +12,9 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-
+  get '/' do
+    erb :landing
+  end
 
   helpers do
 
@@ -20,3 +27,4 @@ class ApplicationController < Sinatra::Base
       User.find(session[:user_id])
     end
   end
+end
