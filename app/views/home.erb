@@ -1,2 +1,5 @@
 <h1>Welcome, <%= @user.username %></h1>
 
+<% if @user.class.name == "Venue" %>
+<a href="/venues/create_show">Create New Show</a>
+<% end %>

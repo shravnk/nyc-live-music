@@ -37,6 +37,10 @@ class VenueController < ApplicationController
 	  	end
 	end
 
+	get '/venues/create_show' do
+		erb :'/venues/create_show'
+	end
+
 	get "/venues/:slug" do 
 		@user = Venue.find_by_slug(params[:slug])
 		erb :'/venues/show'
@@ -50,6 +54,8 @@ class VenueController < ApplicationController
 		@user.save
 		redirect '/home'
 	end
+
+
 
 end
 

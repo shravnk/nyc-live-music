@@ -10,6 +10,7 @@ class ArtistController < ApplicationController
 
 	post '/artists/signup' do
 		if !params.value?("")
+			
 	  		user = Artist.create(username: params[:username], password: params[:password])
 	  		user.save
 	  		session[:id] = user.id
@@ -35,11 +36,6 @@ class ArtistController < ApplicationController
 	  	else
 	  		redirect '/artists/login'
 	  	end
-	end
-
-	get '/artists/edit' do
-		@user = Artist.find(session[:id])
-		erb :'/artists/edit'
 	end
 
 	get "/artists/:slug" do 
