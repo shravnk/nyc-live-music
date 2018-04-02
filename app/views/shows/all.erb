@@ -1,0 +1,9 @@
+<% Show.all.each do |show| %>
+
+<p><%= show.name %> </p>  
+<% if show.start_time %>
+	<p><%= show.start_time.strftime("%B %d, %Y") %></p>
+<% else %>
+	<p>TBA</p>
+<% end %>
+<% end %>

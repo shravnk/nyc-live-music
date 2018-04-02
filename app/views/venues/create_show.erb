@@ -1,6 +1,12 @@
 <form action="/shows/new" method="POST">
 	<h3>Show name:</h3>
 	<input type="text" name="name">
+	<h3>Artist: </h3>
+	<select name="artist">
+		<% Artist.all.each do |a| %>
+		<option value="<%= a.id %>"><%= a.name %></option>
+		<% end %>
+	</select>
 	<h3>Price:</h3>
 	<input type="text" name="price">
 	<h3>Age:</h3>

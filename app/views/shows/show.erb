@@ -1,3 +1,4 @@
 <h2><%= @show.name %></h2>
 <p><%= @show.age %></p>
 <p><%= @show.start_time.strftime("%B %d, %Y %l:%m %p") %></p>
+<p><%= Artist.find(@show.artist_id).name %></p>
