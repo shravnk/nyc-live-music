@@ -17,18 +17,14 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/home' do
-    id = session[:id]
-    type = session[:type]
-    case type
-      when 'Venue'
-        @user = Venue.find(id)
-      when 'Artist' 
-        @user = Artist.find(id)
-      when 'Fan'
-        @user = Fan.find(id)
-     end
-
+    @user = current_user
     erb :'/home'
+  end
+
+  get '/edit_profile' do
+    @user = current_user
+    path = @user.class.name.downcase + 's'
+    erb :"/#{path}/edit"
   end
 
   get '/logout' do
@@ -43,8 +39,17 @@ class ApplicationController < Sinatra::Base
     end
 
 
-    # def current_user
-    #   User.find(session[:user_id])
-    # end
+    def current_user
+      id = session[:id]
+      type = session[:type]
+      case type
+        when 'Venue'
+          return Venue.find(id)
+        when 'Artist' 
+          return Artist.find(id)
+        when 'Fan'
+          return Fan.find(id)
+       end
+    end
   end
 end
