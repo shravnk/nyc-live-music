@@ -1,0 +1,5 @@
+<% @venues.all.each do |venue| %>
+
+<a href="/venues/<%= venue.slug %>"><%= venue.name %></a>
+
+<% end %>

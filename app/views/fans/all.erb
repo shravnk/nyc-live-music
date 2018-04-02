@@ -1,0 +1,5 @@
+<% @fans.all.each do |fan| %>
+
+<a href="/fans/<%= fan.slug %>"><%= fan.name %></a>
+
+<% end %>

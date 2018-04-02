@@ -1,4 +1,9 @@
 class VenueController < ApplicationController
+
+	get '/venues' do
+		@venues = Venue.all
+		erb :'/venues/all'
+	end
 	get '/venues/signup' do
 		erb :'/venues/signup'
 	end
@@ -36,5 +41,15 @@ class VenueController < ApplicationController
 		@user = Venue.find_by_slug(params[:slug])
 		erb :'/venues/show'
 	end
+
+	post '/venues/:slug/edit' do
+		@user = Venue.find_by_slug(params[:slug])
+		@user.name = params[:name]
+		@user.bio = params[:bio]
+		@user.address = params[:address]
+		@user.save
+		redirect '/home'
+	end
+
 end
 

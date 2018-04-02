@@ -1,4 +1,10 @@
 class FanController < ApplicationController
+
+	get '/fans' do
+		@fans = Fan.all
+		erb :'/fans/all'
+	end
+
 	get '/fans/signup' do
 		erb :'/fans/signup'
 	end
@@ -35,5 +41,13 @@ class FanController < ApplicationController
 	get "/fans/:slug" do 
 		@user = Fan.find_by_slug(params[:slug])
 		erb :'/fans/show'
+	end
+
+	post '/fans/:slug/edit' do
+		@user = Fan.find_by_slug(params[:slug])
+		@user.name = params[:name]
+		@user.bio = params[:bio]
+		@user.save
+		redirect '/home'
 	end
 end
