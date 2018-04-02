@@ -13,7 +13,6 @@ class VenueController < ApplicationController
 	  		redirect '/venues/signup'
 	  	end
 	end
-	end
 
 
 	get '/venues/login' do
@@ -21,10 +20,20 @@ class VenueController < ApplicationController
 	end
 
 	post '/venues/login' do
+		user = Venue.find_by(username: params['username'])
 
+	  	if user
+	  		session[:id] = user.id
+
+	  		redirect "/venues/#{user.slug}"
+	  	else
+	  		redirect '/venues/login'
+	  	end
 	end
 
-	get '/venues/show' do 
-		
+	get "/venues/:slug" do 
+		@user = Venue.find_by_slug(params[slug])
+		erb :'/users/show'
 	end
 end
+
