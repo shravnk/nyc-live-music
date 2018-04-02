@@ -32,8 +32,22 @@ class ArtistController < ApplicationController
 	  	end
 	end
 
+	get '/artists/edit' do
+		@user = Artist.find(session[:id])
+		erb :'/artists/edit'
+	end
+
 	get "/artists/:slug" do 
 		@user = Artist.find_by_slug(params[:slug])
 		erb :'/artists/show'
 	end
+
+	post '/artists/:slug/edit' do
+		@user = Artist.find_by_slug(params[:slug])
+		@user.name = params[:name]
+		@user.bio = params[:bio]
+		@user.save
+		redirect '/home'
+	end
+
 end
