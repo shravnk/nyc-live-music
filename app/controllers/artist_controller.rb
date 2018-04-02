@@ -1,4 +1,9 @@
 class ArtistController < ApplicationController
+	get '/artists' do
+		@artists = Artist.all
+		erb :'/artists/all'
+	end
+
 	get '/artists/signup' do
 		erb :'/artists/signup'
 	end
