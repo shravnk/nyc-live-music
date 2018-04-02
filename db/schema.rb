@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 5) do
     t.string "name"
     t.string "age"
     t.integer "price"
-    t.datetime "start_time"
+    t.string "start_time"
     t.integer "venue_id"
     t.integer "artist_id"
   end

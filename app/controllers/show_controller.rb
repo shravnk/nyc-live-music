@@ -1,7 +1,11 @@
+require 'date'
 class ShowController < ApplicationController
 	post '/shows/new' do
-		
-		show = Show.create(name: params[:name], price: params[:price], age: params[:age], venue_id: params[:venue_id])
+		d = params[:date]
+		t = params[:time]
+		dt = d + " " + t
+		binding.pry
+		show = Show.create(name: params[:name], price: params[:price], age: params[:age], venue_id: params[:venue_id], start_time: dt)
 		#can't simply pass params array because of 'captures' key
 		
 		show.save

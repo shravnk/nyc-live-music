@@ -4,7 +4,7 @@ class CreateShows < ActiveRecord::Migration[4.2]
 			t.string :name
 			t.string :age
 			t.integer :price
-			t.datetime :start_time
+			t.string :start_time
 			t.integer :venue_id
 			t.integer :artist_id
 		end
