@@ -22,6 +22,10 @@ class ApplicationController < Sinatra::Base
     case type
       when 'Venue'
         @user = Venue.find(id)
+      when 'Artist' 
+        @user = Artist.find(id)
+      when 'Fan'
+        @user = Fan.find(id)
      end
 
     erb :'/home'
