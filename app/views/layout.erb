@@ -4,7 +4,10 @@
 	<title></title>
 </head>
 <body>
-
+	 <% if logged_in? %>
+      <p><a href="/home">Home</a></p>
+      <p><a href="/logout">Log Out</a></p>
+    <% end %>
 	<%= yield %>
 </body>
 </html>

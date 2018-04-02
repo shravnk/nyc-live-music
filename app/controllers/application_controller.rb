@@ -16,15 +16,31 @@ class ApplicationController < Sinatra::Base
     erb :landing
   end
 
+  get '/home' do
+    id = session[:id]
+    type = session[:type]
+    case type
+      when 'Venue'
+        @user = Venue.find(id)
+     end
+
+    erb :'/home'
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
+
   helpers do
 
     def logged_in?
-      !!session[:user_id]
+      !!session[:id]
     end
 
 
-    def current_user
-      User.find(session[:user_id])
-    end
+    # def current_user
+    #   User.find(session[:user_id])
+    # end
   end
 end

@@ -8,7 +8,8 @@ class VenueController < ApplicationController
 	  		user = Venue.create(username: params[:username], password: params[:password])
 	  		user.save
 	  		session[:id] = user.id
-	  		redirect "/venues/#{user.slug}"
+	  		session[:type] = user.class.name
+	  		redirect "/home"
 	  	else
 	  		redirect "/venues/signup"
 	  	end
@@ -24,8 +25,8 @@ class VenueController < ApplicationController
 
 	  	if user
 	  		session[:id] = user.id
-
-	  		redirect "/venues/#{user.slug}"
+	  		session[:type] = user.class.name
+	  		redirect "/home"
 	  	else
 	  		redirect '/venues/login'
 	  	end
