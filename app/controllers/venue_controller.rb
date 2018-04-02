@@ -5,12 +5,12 @@ class VenueController < ApplicationController
 
 	post '/venues/signup' do
 		if !params.value?("")
-	  		@venue = Venue.create(params)
-	  		@venue.save
-	  		session[:id] = @venue.id
-	  		redirect "/venues/show"
+	  		user = Venue.create(username: params[:username], password: params[:password])
+	  		user.save
+	  		session[:id] = user.id
+	  		redirect "/venues/#{user.slug}"
 	  	else
-	  		redirect '/venues/signup'
+	  		redirect "/venues/signup"
 	  	end
 	end
 
@@ -32,8 +32,8 @@ class VenueController < ApplicationController
 	end
 
 	get "/venues/:slug" do 
-		@user = Venue.find_by_slug(params[slug])
-		erb :'/users/show'
+		@user = Venue.find_by_slug(params[:slug])
+		erb :'/venues/show'
 	end
 end
 

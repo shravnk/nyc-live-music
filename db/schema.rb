@@ -13,6 +13,8 @@
 ActiveRecord::Schema.define(version: 5) do
 
   create_table "artists", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
     t.string "name"
     t.string "bio"
   end
