@@ -1,16 +1,15 @@
 <h2><%= @show.name %></h2>
 <p><%= @show.age %></p>
-<p><%= @show.start_time.strftime("%B %d, %Y %l:%m %p") %></p>
+<p><%= @show.start_time.strftime("%B %d, %Y %l:%M %p") %></p>
 <p><%= Artist.find(@show.artist_id).name %></p>
 
-
-<% @show.fans.each do |fan| %>
-<%= fan.name %>
-<% end %>
-
+<h3>Who's Going?</h3>
 <% if session[:type] == "Fan" %>
 	<form action="/shows/add_fan" method="post">
 		<button name="attending">I'm Going!</button>
 		<input type="hidden" name="show_id" value="<%= @show.id %>">
 	</form>
+<% end %>
+<% @show.fans.each do |fan| %>
+<%= fan.name %> <br>
 <% end %>

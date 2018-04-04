@@ -4,17 +4,19 @@
 <br>
 <p><%= @user.bio %></p>
 
-<% Show.all.each do |show| %>
-
 <h3>Upcoming Shows</h3>
+<% Show.all.each do |show| %>
+
+
 <% if show.venue_id == @user.id && show.start_time > Time.now %>
-<a href="/shows/#{show.id}"><%= show.name %></a>
+<a href="/shows/<%= show.id %>"><%= show.name %></a>
 <% end %>
 <% end %>
 
-<% Show.all.each do |show| %>
 <h3>Past Shows</h3>
+<% Show.all.each do |show| %>
+
 <% if show.venue_id == @user.id && show.start_time < Time.now %>
-<a href="/shows/#{show.id}"><%= show.name %></a>
+<a href="/shows/<%= show.id %>"><%= show.name %></a>
 <% end %>
 <% end %>
