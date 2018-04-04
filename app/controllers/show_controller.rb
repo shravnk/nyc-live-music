@@ -16,7 +16,8 @@ class ShowController < ApplicationController
 	end
 
 	post '/shows/add_fan' do
-		fanshow = FanShow.create(fan_id: session[:id], genre_id: params[:show_id])
+		
+		fanshow = FanShow.find_or_create_by(fan_id: session[:id], show_id: params[:show_id])
 		fanshow.save
 		redirect "/shows/#{params[:show_id]}"
 	end
