@@ -1,6 +1,6 @@
 <% Show.all.each do |show| %>
-
-<p><%= show.name %> </p>  
+<a href="/shows/<%= show.id %>"><%= show.name %></a>
+ 
 <% if show.start_time %>
 	<p><%= show.start_time.strftime("%B %d, %Y") %></p>
 <% else %>

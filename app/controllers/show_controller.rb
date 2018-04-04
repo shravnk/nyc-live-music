@@ -15,6 +15,12 @@ class ShowController < ApplicationController
 		redirect "/shows/#{show.id}"
 	end
 
+	post '/shows/add_fan' do
+		fanshow = FanShow.create(fan_id: session[:id], genre_id: params[:show_id])
+		fanshow.save
+		redirect "/shows/#{params[:show_id]}"
+	end
+
 	get '/shows/:id' do
 		@show = Show.find(params[:id])
 		erb :'/shows/show'
