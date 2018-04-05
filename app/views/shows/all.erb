@@ -1,9 +1,19 @@
-<% Show.all.each do |show| %>
+<% future_shows =  Show.all.select{|show| show.start_time > Time.now}.sort_by!{|s| s.start_time}%>
+
+
+
+<% future_shows.each do |show| %>
 <a href="/shows/<%= show.id %>"><%= show.name %></a>
  
 <% if show.start_time %>
 	<p><%= show.start_time.strftime("%B %d, %Y") %></p>
 <% else %>
 	<p>TBA</p>
+<% end %>
+<% end %>
+
+<% future_shows.each do |show| %>
+<% if show.artist_id == @user.id 
+<a href="/shows/<%= show.id %>"><%= show.name %></a>
 <% end %>
 <% end %>

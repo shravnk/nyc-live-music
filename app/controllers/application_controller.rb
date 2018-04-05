@@ -51,5 +51,13 @@ class ApplicationController < Sinatra::Base
           return Fan.find(id)
        end
     end
+
+    def future_shows 
+      Show.all.select{|show| show.start_time > Time.now}.sort_by!{|s| s.start_time}
+    end
+
+    def past_shows
+      Show.all.select{|show| show.start_time < Time.now}.sort_by!{|s| s.start_time}
+    end
   end
 end

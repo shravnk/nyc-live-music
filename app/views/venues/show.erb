@@ -5,18 +5,20 @@
 <p><%= @user.bio %></p>
 
 <h3>Upcoming Shows</h3>
-<% Show.all.each do |show| %>
+<% future_shows.each do |show| %>
 
 
-<% if show.venue_id == @user.id && show.start_time > Time.now %>
+<% if show.venue_id == @user.id %>
 <a href="/shows/<%= show.id %>"><%= show.name %></a>
+<p><%= show.start_time.strftime("%B %d") %></p>
 <% end %>
 <% end %>
 
 <h3>Past Shows</h3>
-<% Show.all.each do |show| %>
+<% past_shows.each do |show| %>
 
-<% if show.venue_id == @user.id && show.start_time < Time.now %>
+<% if show.venue_id == @user.id %>
 <a href="/shows/<%= show.id %>"><%= show.name %></a>
+<p><%= show.start_time.strftime("%B %d, %Y") %></p>
 <% end %>
 <% end %>

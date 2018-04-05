@@ -3,16 +3,21 @@
 <p><%= @user.bio %></p>
 
 <h3>Shows I'm Going To</h3>
-<% Show.all.each do |show| %>
-<% if show.fans.include?(@user) && show.start_time > Time.now %>
+<% future_shows.each do |show| %>
+<% if show.fans.include?(@user) %>
 	<a href="/shows/<%= show.id %>"><%= show.name %></a>
+<p><%= show.venue.name %></p> 
+<p><%= show.start_time.strftime("%B %d") %></p>
 <% end %>
 <% end %>
 
 <h3>Shows I've Been To</h3>
-<% Show.all.each do |show| %>
+<% past_shows.each do |show| %>
 
-<% if show.fans.include?(@user) && show.start_time < Time.now %>
+<% if show.fans.include?(@user) %>
 	<a href="/shows/<%= show.id %>"><%= show.name %></a>
+	<p><%= show.venue.name %></p> 
+<p><%= show.start_time.strftime("%B %d, %Y") %></p>
+
 <% end %>
 <% end %>
