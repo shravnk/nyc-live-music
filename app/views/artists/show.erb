@@ -5,26 +5,40 @@
 
 <h3>Upcoming Shows</h3>
 
-
-
-<% future_shows.each do |show| %>
-<% if show.artist_id == @user.id %>
-<a href="/shows/<%= show.id %>"><%= show.name %></a>
-<p><%= show.venue.name %></p> 
-<p><%= show.start_time.strftime("%B %d") %></p>
-<br>
-<% end %>
-<% end %>
+<div class="row">
+  <div class="col-sm-4"><h4>Show</h4></div>
+  <div class="col-sm-4"><h4>Venue</h4></div>
+  <div class="col-sm-4"><h4>Date</h4></div>
+	<% future_shows.each do |show| %>
+		<% if show.artist_id == @user.id %>
+		<div class="col-sm-4"><a href="/shows/<%= show.id %>"><%= show.name %></a></div>
+		<div class="col-sm-4"><%= show.venue.name %></div>
+		<% if show.start_time %>
+			<div class="col-sm-4"><%= show.start_time.strftime("%B %d") %></div>
+		<% else %>
+			<div class="col-sm-4">TBA</div>
+		<% end %>
+		<% end %>
+	<% end %>
+</div>
 
 
 
 <h3>Past Shows</h3>
 
-<% past_shows.each do |show| %>
-
-<% if show.artist_id == @user.id %>
-<a href="/shows/<%= show.id %>"><%= show.name %></a>
-<p><%= show.venue.name %></p> 
-<p><%= show.start_time.strftime("%B %d, %Y") %></p>
-<% end %>
-<% end %>
+<div class="row">
+  <div class="col-sm-4"><h4>Show</h4></div>
+  <div class="col-sm-4"><h4>Venue</h4></div>
+  <div class="col-sm-4"><h4>Date</h4></div>
+	<% past_shows.each do |show| %>
+		<% if show.artist_id == @user.id %>
+		<div class="col-sm-4"><a href="/shows/<%= show.id %>"><%= show.name %></a></div>
+		<div class="col-sm-4"><%= show.venue.name %></div>
+		<% if show.start_time %>
+			<div class="col-sm-4"><%= show.start_time.strftime("%B %d, %Y") %></div>
+		<% else %>
+			<div class="col-sm-4">TBA</div>
+		<% end %>
+		<% end %>
+	<% end %>
+</div>

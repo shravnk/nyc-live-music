@@ -26,6 +26,7 @@ class FanController < ApplicationController
 		erb :'/fans/login'
 	end
 
+
 	post '/fans/login' do
 		user = Fan.find_by(username: params['username'])
 
