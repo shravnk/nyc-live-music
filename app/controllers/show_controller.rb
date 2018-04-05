@@ -8,10 +8,8 @@ class ShowController < ApplicationController
 		d = params[:date]
 		t = params[:time]
 		dt = d + " " + t
-		binding.pry
 		show = Show.create(name: params[:name], price: params[:price], age: params[:age], venue_id: params[:venue_id], start_time: dt, artist_id: params[:artist])
 		#can't simply pass params array because of 'captures' key
-		binding.pry
 		show.save
 		redirect "/shows/#{show.id}"
 	end
