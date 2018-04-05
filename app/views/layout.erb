@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Social Music NYC</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	 <% if logged_in? %>
-      <p><a href="/home">Home</a></p>
-      <p><a href="/edit_profile">Edit Profile</a></p>
-      <p><a href="/shows">Shows</a></p>
-      <p><a href="/venues">Venues</a></p>
-      <p><a href="/artists">Artists</a></p>
-      <p><a href="/fans">Fans</a></p>
-      <p><a href="/logout">Log Out</a></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+              <a class="navbar-brand" href="#">Social Music NYC</a>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav">
+                  <li class="nav-item active">
+                    <a href="/home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/edit_profile">Edit Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/shows">Shows</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/venues">Venues</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/artists">Artists</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/logout">Log Out</a>
+                  </li>
+                </ul>
+              </div>
+
+          </nav>
+        </div>
+      </div>
     <% end %>
 	<%= yield %>
 </body>
