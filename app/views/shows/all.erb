@@ -12,8 +12,3 @@
 <% end %>
 <% end %>
 
-<% future_shows.each do |show| %>
-<% if show.artist_id == @user.id 
-<a href="/shows/<%= show.id %>"><%= show.name %></a>
-<% end %>
-<% end %>

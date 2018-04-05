@@ -1,6 +1,7 @@
-<form action="/shows/new" method="POST">
+<form action="/shows/<%= @show.id %>" method="POST">
+	<input id="hidden" type="hidden" name="_method" value="patch">
 	<h3>Show name:</h3>
-	<input type="text" name="name">
+	<input type="text" name="name" value = "<%= @show.name %>">
 	<h3>Artist: </h3>
 	<select name="artist">
 		<% Artist.all.each do |a| %>
@@ -8,14 +9,14 @@
 		<% end %>
 	</select>
 	<h3>Price:</h3>
-	<input type="text" name="price">
+	<input type="text" name="price" value="<%= @show.price %>">
 	<h3>Age:</h3>
-	<input type="integer" name="age">
+	<input type="integer" name="age" value="<%= @show.age %>">
 	<h3>Date</h3>
 	<input type="date" name="date">
 	<h3>Time:</h3>
 	<input type="time" name="time">
 	<input type="hidden" name="venue_id" value="<%= current_user.id %>">
-	<input type="submit" value="Create Show">
+	<input type="submit" value="Save changes">
 </form>
 
