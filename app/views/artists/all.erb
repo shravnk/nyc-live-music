@@ -1,5 +1,7 @@
+<h5>Click on an Artist's Page to Learn More:</h5>
+
 <% @artists.all.each do |artist| %>
 
-<a href="/artists/<%= artist.slug %>"><%= artist.name %></a>
+<a href="/artists/<%= artist.slug %>"><%= artist.name %></a><br>
 
 <% end %>

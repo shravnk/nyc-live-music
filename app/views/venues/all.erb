@@ -1,5 +1,6 @@
+<h5>Click on a Venue's Page to Learn More:</h5>
 <% @venues.all.each do |venue| %>
 
-<a href="/venues/<%= venue.slug %>"><%= venue.name %></a>
+<a href="/venues/<%= venue.slug %>"><%= venue.name %></a><br>
 
 <% end %>

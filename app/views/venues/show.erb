@@ -1,9 +1,14 @@
 <h2><%= @user.name %></h2>
 
-<p><%= @user.address %></p>
-<br>
-<p><%= @user.bio %></p>
 
+<h4>About this venue:</h4>
+<p><%= @user.bio %></p><br>
+
+<h4>Venue Location:</h4>
+<p><%= @user.address %></p><br>
+<% gpath = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDP_29l2W2nKlsxKraRNzJ90CeQLXRUSws&q=" + @user.address.gsub!(/\s/, '+') %>
+
+<iframe src="<%= gpath %>" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 <h3>Upcoming Shows</h3>
 
 <div class="row">
@@ -22,7 +27,7 @@
 	<% end %>
 </div>
 
-
+<br><br>
 
 <h3>Past Shows</h3>
 
