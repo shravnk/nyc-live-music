@@ -10,8 +10,13 @@ class ShowController < ApplicationController
 		dt = d + " " + t
 		show = Show.create(name: params[:name], price: params[:price], age: params[:age], venue_id: params[:venue_id], start_time: dt, artist_id: params[:artist])
 		#can't simply pass params array because of 'captures' key
-		show.save
-		redirect "/shows/#{show.id}"
+		if show.errors.any?
+			@errors = show.errors
+			erb :"/shows/error"
+		else
+			show.save
+			redirect "/shows/#{show.id}"
+		end		
 	end
 
 	post '/shows/add_fan' do

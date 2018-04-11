@@ -1,0 +1,4 @@
+<h4>Could not create show after encountering errors:</h4>
+<% @errors.messages.each do |typ, msg| %>
+<p><%= "#{typ}: #{msg[0]}"%></p>
+<% end %>
