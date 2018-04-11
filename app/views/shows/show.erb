@@ -11,5 +11,5 @@
 	</form>
 <% end %>
 <% @show.fans.each do |fan| %>
-<%= fan.name %> <br>
+<a href="/fans/<%= fan.slug %>"><%= fan.name %></a><br> 
 <% end %>

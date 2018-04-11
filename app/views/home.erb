@@ -5,3 +5,22 @@
 <% end %>
 
 
+<h3>Your Upcoming Shows</h3>
+
+<div class="row">
+  <div class="col-sm-6"><h4>Show</h4></div>
+  <div class="col-sm-3"><h4>Date</h4></div>
+	<% future_shows.each do |show| %>
+		<% if show.venue_id == @user.id && session[:type] == "Venue" %>
+			<div class="col-sm-6"><a href="/shows/<%= show.id %>"><%= show.name %></a></div>
+			<div class="col-sm-3"><%= show.start_time.strftime("%B %d") %></div>
+			<div class="col-sm-3"><a href="/shows/<%= show.id %>/edit">Edit</a></div>
+		<% elsif show.fans.include?(@user) %>
+			<div class="col-sm-6"><a href="/shows/<%= show.id %>"><%= show.name %></a></div>
+			<div class="col-sm-3"><%= show.start_time.strftime("%B %d") %></div>
+		<% elsif show.artist == @user %>
+			<div class="col-sm-6"><a href="/shows/<%= show.id %>"><%= show.name %></a></div>
+			<div class="col-sm-3"><%= show.start_time.strftime("%B %d") %></div>
+		<% end %>
+	<% end %>
+</div>
