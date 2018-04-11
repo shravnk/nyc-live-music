@@ -16,14 +16,12 @@ body, html {
 
 .land-menu {
 	background-color: rgba(192,192,192,0.85);
-	vertical-align: middle;
-}
-
-.white-text {
+	text-align: center;
 	color: white;
 }
 
-.white-text a:link, a:visited, a:hover, a:active {
+
+.land-menu a:link, a:visited, a:hover, a:active {
   text-decoration: none;
   color: white;
   font: bold;
