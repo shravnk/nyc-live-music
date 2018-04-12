@@ -1,6 +1,19 @@
 <h3><%= @show.name %></h3>
+
+<% if @show.venue_id == session[:id] && session[:type] == "Venue" %>
+	<!-- <a class= "button" href="/shows/<%= @show.id %>/edit">Edit Show</a> -->
+	<form style="display: inline-block" method="GET" action="/shows/<%= @show.id %>/edit">
+		<input type="submit" value="Edit Show">
+	</form>
+	<form style="display: inline-block" action="/shows/<%= @show.id %>/delete" method="POST">
+		<input type="submit" value="Delete Show">
+	</form>
+<% end %>
+
 <h5>Artist: </h5>
 <p><%= Artist.find(@show.artist_id).name %></p>
+<h5>Venue: </h5>
+<p><%= @show.venue.name %></p>
 <h5>Ages: </h5>
 <p><%= @show.age %></p>
 <h5>Date: </h5>
@@ -9,13 +22,16 @@
 <p><%= @show.start_time.strftime("%l:%M %p") %></p>
 <br>
 
-<h4>Who's Going?</h4>
+<span><font size="+1">Who's Going? </font></span>
+<span>
 <% if session[:type] == "Fan" %>
-	<form action="/shows/add_fan" method="post">
+	<form action="/shows/add_fan" method="post" id="im-going">
 		<button name="attending">I'm Going!</button>
 		<input type="hidden" name="show_id" value="<%= @show.id %>">
 	</form>
 <% end %>
+</span>
+<br>
 <% @show.fans.each do |fan| %>
 <a href="/fans/<%= fan.slug %>"><%= fan.name %></a><br> 
 <% end %>

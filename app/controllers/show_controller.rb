@@ -35,6 +35,12 @@ class ShowController < ApplicationController
 		erb :'/shows/edit_show'
 	end
 
+	post '/shows/:id/delete' do 
+		@show = Show.find(params[:id])
+		@show.delete
+		erb :'/shows/all'
+	end
+
 	patch '/shows/:id' do
 		d = params[:date]
 		t = params[:time]

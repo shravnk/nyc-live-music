@@ -17,20 +17,51 @@ body, html {
 .land-menu {
 	background-color: rgba(192,192,192,0.85);
 	text-align: center;
+	width: 80%;
 	color: white;
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-
-.land-menu a:link, a:visited, a:hover, a:active {
+.land-menu a:link, .land-menu a:active, .land-menu a:visited, .land-menu a:hover {
   text-decoration: none;
   color: white;
   font: bold;
 }
 
-#landing {
+
+.landing {
 	background-image: url("../images/cbgb.jpg");
 	height: 100%;
+	width: 100%;
+	margin: 0;
 	background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
+
+.container {
+	background-color: #e4ede3;
+	height: 100%;
+}
+
+#im-going {
+	display: inline-block;
+}
+
+.main-page .container .button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
