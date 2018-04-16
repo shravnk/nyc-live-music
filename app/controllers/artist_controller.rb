@@ -11,11 +11,15 @@ class ArtistController < ApplicationController
 	post '/artists/signup' do
 		if !params.value?("")
 			
-	  		user = Artist.create(username: params[:username], password: params[:password])
-	  		user.save
-	  		session[:id] = user.id
-	  		session[:type] = user.class.name
-	  		redirect "/home"
+			if Artist.find_by(username: params[:username])
+				redirect "/artists/signup"
+			else
+		  		user = Artist.create(username: params[:username], password: params[:password])
+		  		user.save
+		  		session[:id] = user.id
+		  		session[:type] = user.class.name
+		  		redirect "/home"
+	  		end
 	  	else
 	  		redirect "/artists/signup"
 	  	end

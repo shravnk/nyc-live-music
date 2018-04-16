@@ -10,11 +10,15 @@ class VenueController < ApplicationController
 
 	post '/venues/signup' do
 		if !params.value?("")
-	  		user = Venue.create(username: params[:username], password: params[:password])
-	  		user.save
-	  		session[:id] = user.id
-	  		session[:type] = user.class.name
-	  		redirect "/home"
+			if Venue.find_by(username: params[:username])
+				redirect "/venues/signup"
+			else
+				user = Venue.create(username: params[:username], password: params[:password])
+		  		user.save
+		  		session[:id] = user.id
+		  		session[:type] = user.class.name
+		  		redirect "/home"
+		  	end
 	  	else
 	  		redirect "/venues/signup"
 	  	end

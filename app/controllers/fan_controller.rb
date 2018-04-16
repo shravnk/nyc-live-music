@@ -11,11 +11,15 @@ class FanController < ApplicationController
 
 	post '/fans/signup' do
 		if !params.value?("")
-	  		user = Fan.create(username: params[:username], password: params[:password])
-	  		user.save
-	  		session[:id] = user.id
-	  		session[:type] = user.class.name
-	  		redirect "/home"
+			if Fan.find_by(username: params[:username])
+				redirect "/fans/signup"
+			else
+		  		user = Fan.create(username: params[:username], password: params[:password])
+		  		user.save
+		  		session[:id] = user.id
+		  		session[:type] = user.class.name
+		  		redirect "/home"
+		  	end
 	  	else
 	  		redirect "/fans/signup"
 	  	end
