@@ -32,7 +32,7 @@ class VenueController < ApplicationController
 	post '/venues/login' do
 		user = Venue.find_by(username: params['username'])
 
-	  	if user
+	  	if user && user.authenticate(params[:password])
 	  		session[:id] = user.id
 	  		session[:type] = user.class.name
 	  		redirect "/home"
@@ -42,6 +42,7 @@ class VenueController < ApplicationController
 	end
 
 	get '/venues/create_show' do
+		
 		erb :'/venues/create_show'
 	end
 

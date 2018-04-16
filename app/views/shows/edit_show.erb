@@ -1,5 +1,3 @@
-<% if @show.venue_id == session[:id] && session[:type] == "Venue"%>
-
 <form action="/shows/<%= @show.id %>" method="POST">
 	<input id="hidden" type="hidden" name="_method" value="patch">
 	<h3>Show name:</h3>

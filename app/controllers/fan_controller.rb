@@ -34,7 +34,7 @@ class FanController < ApplicationController
 	post '/fans/login' do
 		user = Fan.find_by(username: params['username'])
 
-	  	if user
+	  	if user && user.authenticate(params[:password])
 	  		session[:id] = user.id
 	  		session[:type] = user.class.name
 	  		redirect "/home"

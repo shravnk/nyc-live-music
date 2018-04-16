@@ -10,7 +10,7 @@ class ArtistController < ApplicationController
 
 	post '/artists/signup' do
 		if !params.value?("")
-			
+
 			if Artist.find_by(username: params[:username])
 				redirect "/artists/signup"
 			else
@@ -33,7 +33,7 @@ class ArtistController < ApplicationController
 	post '/artists/login' do
 		user = Artist.find_by(username: params['username'])
 
-	  	if user
+	  	if user && user.authenticate(params[:password])
 	  		session[:id] = user.id
 	  		session[:type] = user.class.name
 	  		redirect "/home"

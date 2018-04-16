@@ -32,7 +32,12 @@ class ShowController < ApplicationController
 
 	get '/shows/:id/edit' do 
 		@show = Show.find(params[:id])
-		erb :'/shows/edit_show'
+		if @show.venue_id == session[:id] && session[:type] == "Venue"
+			@show = Show.find(params[:id])
+			erb :'/shows/edit_show'
+		else
+			redirect "/shows/#{params[:id]}"
+		end
 	end
 
 	post '/shows/:id/delete' do 

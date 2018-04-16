@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 6) do
+ActiveRecord::Schema.define(version: 7) do
 
   create_table "artists", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "name"
     t.string "bio"
   end
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 6) do
 
   create_table "fans", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "name"
     t.string "bio"
   end
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 6) do
 
   create_table "venues", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "name"
     t.string "bio"
     t.string "address"
